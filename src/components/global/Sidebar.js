@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import { useView } from '../../context/ViewContext';
 
 const menuItems = [
   { name: 'Heroes', view: 'heroes', icon: '👤' },
@@ -11,7 +12,9 @@ const menuItems = [
   { name: 'Support', view: 'support', icon: '❓' },
 ];
 
-export default function Sidebar({ currentView, setView }) {
+export default function Sidebar() {
+  const { currentView, setCurrentView } = useView();
+
   return (
     <div className="fixed left-0 top-0 h-full w-64 bg-gray-900 border-r border-gray-800">
       <div className="p-6">
@@ -20,7 +23,7 @@ export default function Sidebar({ currentView, setView }) {
           {menuItems.map((item) => (
             <button
               key={item.view}
-              onClick={() => setView(item.view)}
+              onClick={() => setCurrentView(item.view)}
               className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
                 currentView === item.view
                   ? 'bg-blue-600 text-white'

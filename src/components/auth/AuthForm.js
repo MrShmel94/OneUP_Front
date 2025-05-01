@@ -8,6 +8,7 @@ import Error from '../global/Error';
 import * as tzdb from '@vvo/tzdb';
 import countryList from 'react-select-country-list';
 import Swal from 'sweetalert2';
+import { useAuth } from '../../context/AuthContext';
 
 const initialState = {
   nickname: '',
@@ -25,6 +26,8 @@ export default function AuthForm({ mode = 'signup', onSuccess }) {
   const [error, setError] = useState(null);
   const [isLoginMode, setIsLoginMode] = useState(mode === 'login');
   const [needsVerification, setNeedsVerification] = useState(false);
+
+  const { updateUser } = useAuth();
 
   const countries = useMemo(() => countryList().getData(), []);
   const timezones = useMemo(() => {
@@ -105,14 +108,13 @@ export default function AuthForm({ mode = 'signup', onSuccess }) {
           showSuccess('Verification successful! Please enter your password to login.');
         } else {
           try {
-            const response = await axiosInstance.post('api/auth/login', {
-          nickname: formData.nickname,
-          password: formData.password,
-        });
-        showSuccess('Login successful!');
-            if (onSuccess) {
-              onSuccess(response.data);
-            }
+            await axiosInstance.post('api/auth/login', {
+              nickname: formData.nickname,
+              password: formData.password,
+            });
+            showSuccess('Login successful!');
+            
+            await updateUser();
           } catch (err) {
             if (err?.response?.data?.message === 'User has not confirmed registration.') {
               setNeedsVerification(true);

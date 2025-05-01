@@ -2,13 +2,12 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import axiosInstance from '../../lib/axios';
 
 export default function HeroCard({ hero, isAvailable, initialAbilities, onHeroChange }) {
   const [heroState, setHeroState] = useState(hero);
+  const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
-    // Update abilities when initialAbilities changes
     const updatedAbilities = heroState.abilities.map(ability => ({
       ...ability,
       currentLevel: initialAbilities[ability.id] ? parseInt(initialAbilities[ability.id]) : 0
@@ -45,11 +44,12 @@ export default function HeroCard({ hero, isAvailable, initialAbilities, onHeroCh
     <div className="bg-gray-800/50 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
       <div className="relative h-64">
         <Image
-          src={heroState.image}
+          src={imageError ? '/images/heroes/placeholder.png' : heroState.image}
           alt={heroState.name}
           fill
           className="object-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          onError={() => setImageError(true)}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-4">
