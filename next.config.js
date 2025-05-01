@@ -1,16 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   images: {
-    domains: [
-      'static.wikia.nocookie.net',
-      'upload.wikimedia.org',
-      'localhost',
-      'oneup-power.vercel.app'
-    ],
-    dangerouslyAllowSVG: true,
-    contentDispositionType: 'attachment',
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-  },
+    unoptimized: true,
+  }
 }
 
 module.exports = nextConfig 

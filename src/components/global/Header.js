@@ -18,7 +18,7 @@ export default function Header({ user, setUser, setView }) {
   return (
     <header className="fixed top-0 right-0 left-64 h-20 flex items-center gap-4 px-8 bg-gradient-to-r from-blue-700/50 via-purple-700/50 to-pink-600/50 backdrop-blur-md border-b border-gray-800 z-10">
       <div className="flex items-center gap-3">
-        <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md">
+        <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md animate-bounce">
           <span className="text-blue-700 text-2xl font-black">1UP</span>
         </div>
         <div>
