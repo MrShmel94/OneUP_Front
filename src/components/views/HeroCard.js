@@ -6,6 +6,11 @@ import Image from 'next/image';
 export default function HeroCard({ hero, isAvailable, initialAbilities, onHeroChange }) {
   const [heroState, setHeroState] = useState(hero);
   const [imageError, setImageError] = useState(false);
+  const [heroImage, setHeroImage] = useState(hero.image);
+
+  useEffect(() => {
+    setHeroImage(`/images/heroes/${hero.name}.webp`);
+  }, [hero.name]);
 
   useEffect(() => {
     const updatedAbilities = heroState.abilities.map(ability => ({
@@ -40,16 +45,26 @@ export default function HeroCard({ hero, isAvailable, initialAbilities, onHeroCh
     });
   }, [isAvailable, hero.id, onHeroChange]);
 
+  const handleImageError = () => {
+    if (!imageError) {
+      setImageError(true);
+      setHeroImage(`/images/heroes/${hero.name}.png`);
+    } else {
+      setHeroImage(hero.image);
+    }
+  };
+
   return (
     <div className="bg-gray-800/50 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-      <div className="relative h-64">
+      <div className="relative h-80">
         <Image
-          src={imageError ? '/images/heroes/placeholder.png' : heroState.image}
+          src={heroImage}
           alt={heroState.name}
           fill
-          className="object-cover"
+          className="object-contain"
+          style={{ objectPosition: 'center 25%', padding: '1rem' }}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          onError={() => setImageError(true)}
+          onError={handleImageError}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-4">
@@ -66,7 +81,7 @@ export default function HeroCard({ hero, isAvailable, initialAbilities, onHeroCh
               {isAvailable ? 'Available' : 'Locked'}
             </button>
           </div>
-          <p className="text-white/80">{heroState.description}</p>
+          {/* <p className="text-white/80">{heroState.description}</p> */}
         </div>
       </div>
       

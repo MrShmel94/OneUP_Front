@@ -91,5 +91,9 @@ export default function Home() {
     }
   };
 
-  return renderView();
+  return (
+    <div className="min-h-screen">
+      {renderView()}
+    </div>
+  );
 }

@@ -17,6 +17,7 @@ export default function HeroesView() {
       try {
         const response = await axiosInstance.get('/api/heroes');
         const serverData = response.data;
+        console.log("serverData", serverData);
         
         const statuses = {};
         const abilities = {};
@@ -24,7 +25,8 @@ export default function HeroesView() {
         heroes.forEach(hero => {
           const heroData = serverData[hero.id];
           if (heroData) {
-            statuses[hero.id] = true;
+            const hasActiveAbilities = Object.values(heroData).some(level => parseInt(level) > 0);
+            statuses[hero.id] = hasActiveAbilities;
             abilities[hero.id] = heroData;
           } else {
             statuses[hero.id] = false;
@@ -48,12 +50,14 @@ export default function HeroesView() {
   const handleHeroChange = useCallback((heroId, changes) => {
     const { isAvailable, ...abilityChanges } = changes;
     
-    if (isAvailable !== undefined && isAvailable !== heroStatuses[heroId]) {
-      setHeroStatuses(prev => ({
-        ...prev,
-        [heroId]: isAvailable
-      }));
-      setHasChanges(true);
+    if (isAvailable !== undefined) {
+      if (isAvailable !== heroStatuses[heroId]) {
+        setHeroStatuses(prev => ({
+          ...prev,
+          [heroId]: isAvailable
+        }));
+        setHasChanges(true);
+      }
     }
     
     if (Object.keys(abilityChanges).length > 0) {
@@ -68,6 +72,12 @@ export default function HeroesView() {
         });
         
         if (Object.keys(newData).length > 0) {
+          const hasActiveAbilities = Object.values(newData).some(level => parseInt(level) > 0);
+          setHeroStatuses(prev => ({
+            ...prev,
+            [heroId]: hasActiveAbilities
+          }));
+          
           setHasChanges(true);
           return {
             ...prev,

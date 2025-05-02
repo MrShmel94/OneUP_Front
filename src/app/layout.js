@@ -3,9 +3,11 @@
 import './globals.css';
 import { AuthProvider } from '../context/AuthContext';
 import { ViewProvider } from '../context/ViewContext';
+import { LoaderProvider } from '../context/LoaderContext';
 import { useAuth } from '../context/AuthContext';
 import Header from '../components/global/Header';
 import Sidebar from '../components/global/Sidebar';
+import Loader from '../components/global/Loader';
 
 function LayoutContent({ children }) {
   const { user } = useAuth();
@@ -27,6 +29,7 @@ function LayoutContent({ children }) {
           {children}
         </div>
       </main>
+      <Loader />
     </div>
   );
 }
@@ -37,9 +40,11 @@ export default function RootLayout({ children }) {
       <body>
         <AuthProvider>
           <ViewProvider>
-            <LayoutContent>
-              {children}
-            </LayoutContent>
+            <LoaderProvider>
+              <LayoutContent>
+                {children}
+              </LayoutContent>
+            </LoaderProvider>
           </ViewProvider>
         </AuthProvider>
       </body>

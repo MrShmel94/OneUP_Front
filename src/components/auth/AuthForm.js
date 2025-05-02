@@ -9,6 +9,7 @@ import * as tzdb from '@vvo/tzdb';
 import countryList from 'react-select-country-list';
 import Swal from 'sweetalert2';
 import { useAuth } from '../../context/AuthContext';
+import { useView } from '../../context/ViewContext';
 
 const initialState = {
   nickname: '',
@@ -26,8 +27,8 @@ export default function AuthForm({ mode = 'signup', onSuccess }) {
   const [error, setError] = useState(null);
   const [isLoginMode, setIsLoginMode] = useState(mode === 'login');
   const [needsVerification, setNeedsVerification] = useState(false);
-
   const { updateUser } = useAuth();
+  const { setCurrentView } = useView();
 
   const countries = useMemo(() => countryList().getData(), []);
   const timezones = useMemo(() => {
@@ -82,7 +83,11 @@ export default function AuthForm({ mode = 'signup', onSuccess }) {
       icon: 'success',
       title: 'Success',
       text: message,
-      confirmButtonColor: '#3085d6',
+      timer: 1500,
+      showConfirmButton: false,
+      willClose: () => {
+        setCurrentView('dummy');
+      }
     });
   };
 
@@ -112,8 +117,6 @@ export default function AuthForm({ mode = 'signup', onSuccess }) {
               nickname: formData.nickname,
               password: formData.password,
             });
-            showSuccess('Login successful!');
-            
             await updateUser();
           } catch (err) {
             if (err?.response?.data?.message === 'User has not confirmed registration.') {
