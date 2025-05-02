@@ -16,7 +16,7 @@ export default function Sidebar() {
   const { currentView, setCurrentView } = useView();
 
   return (
-    <div className="fixed left-0 top-0 h-full w-64 bg-gray-900 border-r border-gray-800">
+    <div className="hidden md:block w-64 bg-gray-900 border-r border-gray-800">
       <div className="p-6">
         <h1 className="text-2xl font-bold text-white mb-8">1UP Power</h1>
         <nav className="space-y-2">

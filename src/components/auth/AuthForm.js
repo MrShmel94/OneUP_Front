@@ -85,9 +85,6 @@ export default function AuthForm({ mode = 'signup', onSuccess }) {
       text: message,
       timer: 1500,
       showConfirmButton: false,
-      willClose: () => {
-        setCurrentView('dummy');
-      }
     });
   };
 

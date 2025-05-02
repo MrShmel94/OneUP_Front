@@ -3,7 +3,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'https://oneup.onrender.com',
+  baseURL: process.env.NEXT_PUBLIC_API_URL || 'https://api.1uppower.club',
   timeout: 100000,
   withCredentials: true,
   headers: {
@@ -11,9 +11,7 @@ const axiosInstance = axios.create({
   },
 });
 
-// Create a wrapper function to handle loading state
 export function createAxiosInstance(setIsLoading) {
-  // Add request interceptor
   axiosInstance.interceptors.request.use(
     (config) => {
       setIsLoading(true);
@@ -25,7 +23,6 @@ export function createAxiosInstance(setIsLoading) {
     }
   );
 
-  // Add response interceptor
   axiosInstance.interceptors.response.use(
     (response) => {
       setIsLoading(false);
