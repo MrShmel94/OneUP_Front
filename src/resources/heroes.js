@@ -141,7 +141,6 @@ export const heroes = [
       }
     ]
   },
-  ,
   {
     id: 5,
     name: 'Syndrion',
@@ -175,7 +174,6 @@ export const heroes = [
       }
     ]
   },
-  ,
   {
     id: 6,
     name: 'Ffraegar',

@@ -3,13 +3,13 @@
 import React, { useState, useMemo } from 'react';
 import Select from 'react-select';
 import axiosInstance from '../../lib/axios';
-import Loader from '../global/Loader';
 import Error from '../global/Error';
 import * as tzdb from '@vvo/tzdb';
 import countryList from 'react-select-country-list';
 import Swal from 'sweetalert2';
 import { useAuth } from '../../context/AuthContext';
 import { useView } from '../../context/ViewContext';
+import { useLoader } from '../../context/LoaderContext';
 
 const initialState = {
   nickname: '',
@@ -23,12 +23,12 @@ const initialState = {
 
 export default function AuthForm({ mode = 'signup', onSuccess }) {
   const [formData, setFormData] = useState(initialState);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isLoginMode, setIsLoginMode] = useState(mode === 'login');
   const [needsVerification, setNeedsVerification] = useState(false);
   const { updateUser } = useAuth();
   const { setCurrentView } = useView();
+  const { setIsLoading } = useLoader();
 
   const countries = useMemo(() => countryList().getData(), []);
   const timezones = useMemo(() => {
@@ -97,7 +97,7 @@ export default function AuthForm({ mode = 'signup', onSuccess }) {
       return;
     }
 
-    setLoading(true);
+    setIsLoading(true);
     try {
       if (isLoginMode) {
         if (needsVerification) {
@@ -141,11 +141,9 @@ export default function AuthForm({ mode = 'signup', onSuccess }) {
       const errorMessage = err?.response?.data?.message || 'Operation failed';
       showError(errorMessage);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
-
-  if (loading) return <Loader />;
 
   return (
     <form onSubmit={handleSubmit} className="bg-gray-900 p-8 rounded-xl shadow-2xl w-full max-w-lg space-y-5 relative z-10">

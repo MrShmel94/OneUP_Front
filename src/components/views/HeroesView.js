@@ -17,7 +17,6 @@ export default function HeroesView() {
       try {
         const response = await axiosInstance.get('/api/heroes');
         const serverData = response.data;
-        console.log("serverData", serverData);
         
         const statuses = {};
         const abilities = {};
@@ -124,12 +123,12 @@ export default function HeroesView() {
 
   return (
     <div className="space-y-6">
-      <div className="flex space-x-4">
+      <div className="flex flex-wrap gap-2">
         {heroCategories.map(category => (
           <button
             key={category.id}
             onClick={() => setSelectedCategory(category.id)}
-            className={`px-4 py-2 rounded-lg transition-colors ${
+            className={`px-4 py-2 rounded-lg transition-colors whitespace-nowrap ${
               selectedCategory === category.id
                 ? 'bg-blue-600 text-white'
                 : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
@@ -140,7 +139,7 @@ export default function HeroesView() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredHeroes.map(hero => (
           <HeroCard
             key={hero.id}
