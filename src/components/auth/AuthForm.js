@@ -129,7 +129,7 @@ export default function AuthForm({ mode = 'signup', onSuccess }) {
           nickname: formData.nickname,
           password: formData.password,
           timezone: formData.timezone.value,
-          country: formData.country.value,
+          location: formData.country.value,
           fullName: formData.realName,
           about: formData.about,
         });
