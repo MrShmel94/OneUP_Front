@@ -5,6 +5,7 @@ import Select from 'react-select';
 import axiosInstance from '../../lib/axios';
 import Error from '../global/Error';
 import * as tzdb from '@vvo/tzdb';
+import { formatInTimeZone } from 'date-fns-tz';
 import countryList from 'react-select-country-list';
 import Swal from 'sweetalert2';
 import { useAuth } from '../../context/AuthContext';
@@ -34,11 +35,14 @@ export default function AuthForm({ mode = 'signup', onSuccess }) {
   const timezones = useMemo(() => {
     try {
       return tzdb.getTimeZones().map(tz => {
-        const offset = tz.rawOffsetInMinutes / 60;
-        const sign = offset >= 0 ? '+' : '';
+        const now = new Date();
+        const offset = formatInTimeZone(now, tz.name, 'xxx').replace(':', '');
+        const offsetHours = parseInt(offset) / 100;
+        const sign = offsetHours >= 0 ? '+' : '';
+        const formattedOffset = `${sign}${Math.abs(offsetHours)}`;
         return {
-          value: `${sign}${offset} UTC`,
-          label: `${tz.name} (${sign}${offset} UTC)`,
+          value: tz.name,
+          label: `${tz.mainCities[0] || tz.name} (UTC${formattedOffset})`,
           rawOffsetInMinutes: tz.rawOffsetInMinutes,
           countryName: tz.countryName,
           continentName: tz.continentName
@@ -125,11 +129,17 @@ export default function AuthForm({ mode = 'signup', onSuccess }) {
           }
         }
       } else {
+        const now = new Date();
+        const timezoneOffset = formData.timezone ? formatInTimeZone(now, formData.timezone.value, 'xxx').replace(':', '') : '';
+        const offsetHours = timezoneOffset ? parseInt(timezoneOffset) / 100 : 0;
+        const sign = offsetHours >= 0 ? '+' : '';
+        const formattedOffset = `UTC${sign}${Math.abs(offsetHours)}`;
+
         await axiosInstance.post('api/auth/register', {
           nickname: formData.nickname,
           password: formData.password,
-          timezone: formData.timezone.value,
-          location: formData.country.value,
+          timezone: formattedOffset,
+          location: formData.country.label,
           fullName: formData.realName,
           about: formData.about,
         });
@@ -240,7 +250,7 @@ export default function AuthForm({ mode = 'signup', onSuccess }) {
             />
           </div>
           <div>
-            <label className="block text-sm text-white mb-1 font-bold">Country *</label>
+            <label className="block text-sm text-white mb-1 font-bold">Location *</label>
             <Select
               name="country"
               options={countries}
@@ -272,10 +282,10 @@ export default function AuthForm({ mode = 'signup', onSuccess }) {
                 }),
                 option: (base, state) => ({
                   ...base,
-                  backgroundColor: state.isSelected ? 'rgb(59, 130, 246)' : '#1f2937',
+                  backgroundColor: state.isSelected ? 'rgb(59, 246, 130)' : '#1f2937',
                   color: 'white',
                   '&:hover': {
-                    backgroundColor: 'rgb(59, 130, 246)',
+                    backgroundColor: 'rgb(59, 246, 130)',
                   },
                 }),
               }}

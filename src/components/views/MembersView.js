@@ -26,7 +26,6 @@ export default function MembersView() {
     try {
       const response = await axiosInstance.get('/api/guild/member/getAllMembers');
       setMembers(response.data);
-      console.log("Members -> ", response.data);
     } catch (error) {
       console.error('Error fetching members:', error);
     } finally {
@@ -176,11 +175,19 @@ export default function MembersView() {
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-gray-400">Timezone:</span>
-                <span className="text-white">{member.timezone}</span>
+                <span className="text-white">{member.timezone || 'Unknown'}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-gray-400">Role:</span>
-                <span className="text-white">{member.role}</span>
+                <span className="text-white">{member.role || 'Unknown'}</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-gray-400">Confirm Code:</span>
+                <span className="text-white">{member.confirmCode || 'Unknown'}</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-gray-400">About:</span>
+                <span className="text-white">{member.about || 'Unknown'}</span>
               </div>
             </div>
 
