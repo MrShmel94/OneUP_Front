@@ -4,13 +4,17 @@ import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useView } from '../context/ViewContext';
 import AuthForm from '../components/auth/AuthForm';
-import HeroesView from '../components/views/HeroesView';
+import HeroesView from '../components/views/my_data/HeroesView';
+import ArtifactsView from '../components/views/my_data/ArtifactView';
 import MembersView from '../components/views/MembersView';
-import EventsView from '../components/views/EventsView';
-import QuestsView from '../components/views/QuestsView';
-import ReferralView from '../components/views/ReferralView';
 import SupportView from '../components/views/SupportView';
-import DummyView from '@/components/views/DummyView';
+import GuildMap from '../components/views/GuildMap';
+import DummyView from '../components/views/DummyView';
+import StrategyMapEditor from '../components/views/StrategyMapEditor';
+import GuildHeroesView from '../components/views/guild/hero/GuildHeroesView';
+import MembersInputView from '../components/views/my_data/MembersInputView';
+import GuildMainInfoView from '../components/views/guild/GuildMainInfoView';
+import GuildArtifactView from '../components/views/guild/artifact/GuildArtifactView';
 
 export default function Home() {
   const { user, isLoading } = useAuth();
@@ -78,14 +82,22 @@ export default function Home() {
         return <HeroesView />;
       case 'members':
         return <MembersView />;
-      case 'events':
-        return <EventsView />;
-      case 'quests':
-        return <QuestsView />;
-      case 'referral':
-        return <ReferralView />;
       case 'support':
         return <SupportView />;
+      case 'guild-map':
+        return <GuildMap />;
+      case 'plans':
+        return <StrategyMapEditor />;
+      case 'guild-heroes':
+        return <GuildHeroesView />;
+      case 'members-input':
+        return <MembersInputView />;
+      case 'guild-main-info':
+        return <GuildMainInfoView />;
+      case 'artifacts':
+        return <ArtifactsView />;
+      case 'guild-artifacts':
+        return <GuildArtifactView />;
       default:
         return <DummyView />;
     }

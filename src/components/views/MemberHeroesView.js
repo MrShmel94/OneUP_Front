@@ -6,6 +6,23 @@ import axiosInstance from '../../lib/axios';
 import { useLoader } from '../../context/LoaderContext';
 import Image from 'next/image';
 
+const MAX_STARS = 6;
+
+function HeroStars({ locked, value }) {
+  return (
+    <div className="flex gap-1 justify-center mt-2">
+      {[...Array(MAX_STARS)].map((_, idx) => (
+        <img
+          key={idx}
+          src={value > idx ? "/images/additional/star_fill.png" : "/images/additional/star.png"}
+          alt={value > idx ? "Filled star" : "Empty star"}
+          className={`w-5 h-5 ${locked ? "opacity-50" : ""}`}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function MemberHeroesView({ memberNickname }) {
   const [memberHeroes, setMemberHeroes] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -37,7 +54,8 @@ export default function MemberHeroesView({ memberNickname }) {
               name: ability.name,
               maxLevel: ability.maxLevel,
               currentLevel: parseInt(abilities[ability.id] || '0')
-            }))
+            })),
+            star: response.data.star
           };
         })
         .filter(Boolean);
@@ -116,6 +134,10 @@ export default function MemberHeroesView({ memberNickname }) {
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <h3 className="text-xl font-bold text-white">{hero.name}</h3>
+                <HeroStars
+                  locked={false}
+                  value={typeof hero.star === 'number' ? Math.max(1, hero.star) : 1}
+                />
               </div>
             </div>
             

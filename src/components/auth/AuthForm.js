@@ -106,7 +106,7 @@ export default function AuthForm({ mode = 'signup', onSuccess }) {
       if (isLoginMode) {
         if (needsVerification) {
           await axiosInstance.post('api/auth/confirm', {
-            nickname: formData.nickname,
+            nickname: formData.nickname.trim(),
             code: formData.verificationCode,
           });
           setNeedsVerification(false);
@@ -115,8 +115,8 @@ export default function AuthForm({ mode = 'signup', onSuccess }) {
         } else {
           try {
             await axiosInstance.post('api/auth/login', {
-              nickname: formData.nickname,
-              password: formData.password,
+              nickname: formData.nickname.trim(),
+              password: formData.password.trim(),
             });
             await updateUser();
           } catch (err) {
@@ -136,8 +136,8 @@ export default function AuthForm({ mode = 'signup', onSuccess }) {
         const formattedOffset = `UTC${sign}${Math.abs(offsetHours)}`;
 
         await axiosInstance.post('api/auth/register', {
-          nickname: formData.nickname,
-          password: formData.password,
+          nickname: formData.nickname.trim(),
+          password: formData.password.trim(),
           timezone: formattedOffset,
           location: formData.country.label,
           fullName: formData.realName,
@@ -147,7 +147,6 @@ export default function AuthForm({ mode = 'signup', onSuccess }) {
         setIsLoginMode(true);
       }
     } catch (err) {
-      console.log(err);
       const errorMessage = err?.response?.data?.message || 'Operation failed';
       showError(errorMessage);
     } finally {

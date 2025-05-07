@@ -14,6 +14,7 @@ const ROLES = ['USER', 'VIEWER', 'MODERATOR', 'ADMIN'];
 
 export default function MembersView() {
   const [members, setMembers] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const { setIsLoading } = useLoader();
   const { user } = useAuth();
 
@@ -62,6 +63,10 @@ export default function MembersView() {
       setIsLoading(false);
     }
   };
+
+  const filteredMembers = members.filter(member =>
+    member.nickname.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const handleBanToggle = async (memberNickname, isCurrentlyBanned) => {
     const action = isCurrentlyBanned ? 'unban' : 'ban';
@@ -151,9 +156,18 @@ export default function MembersView() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold text-white">Guild Members</h1>
+      <div className="flex justify-between items-center flex-wrap gap-4">
+        <h1 className="text-3xl font-bold text-white">Guild Members</h1>
+        <input
+          type="text"
+          placeholder="Search by nickname..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="px-4 py-2 rounded-lg bg-white/80 text-gray-800 placeholder-gray-400 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {members.map((member) => (
+        {filteredMembers.map((member) => (
           <div key={member.nickname} className="bg-gray-800/50 backdrop-blur-md rounded-xl p-6 space-y-4">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-bold text-white">{member.nickname}</h2>

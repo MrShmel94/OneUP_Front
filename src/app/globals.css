@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes golden-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 #FFD700 inset, 0 0 6px 2px #FFD700;
+  }
+  50% {
+    box-shadow: 0 0 20px 8px #FFD700 inset, 0 0 12px 4px #FFD700;
+  }
+}
+.golden-glow {
+  animation: golden-glow 2.0s infinite alternate;
+  z-index: 1;
+}
+
+@keyframes red-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 #FF0000 inset, 0 0 6px 2px #FF0000;
+  }
+  50% {
+    box-shadow: 0 0 20px 8px #FF0000 inset, 0 0 12px 4px #FF0000;
+  }
+}
+.red-glow {
+  animation: red-glow 2.0s infinite alternate;
+  z-index: 1;
+}

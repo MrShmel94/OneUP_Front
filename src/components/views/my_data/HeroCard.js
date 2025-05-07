@@ -3,6 +3,22 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 
+function HeroStars({ locked, value, onChange, maxStars }) {
+  return (
+    <div className="flex gap-1 justify-center mt-2">
+      {[...Array(maxStars)].map((_, idx) => (
+        <img
+          key={idx}
+          src={value > idx ? "/images/additional/star_fill.png" : "/images/additional/star.png"}
+          alt={value > idx ? "Filled star" : "Empty star"}
+          className={`w-6 h-6 cursor-pointer transition-transform ${locked ? "opacity-50 cursor-not-allowed" : "hover:scale-110"}`}
+          onClick={() => !locked && onChange(idx + 1)}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function HeroCard({ hero, isAvailable, initialAbilities, onHeroChange }) {
   const [heroState, setHeroState] = useState(hero);
   const [imageError, setImageError] = useState(false);
@@ -105,6 +121,15 @@ export default function HeroCard({ hero, isAvailable, initialAbilities, onHeroCh
               {isAvailable ? 'Available' : 'Locked'}
             </button>
           </div>
+          <HeroStars
+            locked={!isAvailable}
+            value={!isAvailable ? 0 : Math.max(1, typeof heroState.star === 'number' ? heroState.star : 1)}
+            maxStars={heroState.maxStars}
+            onChange={(newStar) => {
+              setHeroState(prev => ({ ...prev, star: newStar }));
+              onHeroChange(hero.id, { star: newStar });
+            }}
+          />
           {/* <p className="text-white/80">{heroState.description}</p> */}
         </div>
       </div>

@@ -14,6 +14,7 @@ export const heroes = [
     name: 'Maggrat',
     category: 'marksman',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Maggrat is a legendary marksman hero from the Wilderburg faction, known for her ability to inflict debuffs and control the battlefield.',
     abilities: [
       {
@@ -47,6 +48,7 @@ export const heroes = [
     name: 'Zayda',
     category: 'marksman',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Zayda is a legendary marksman hero from the League of Order faction, celebrated for her rapid attacks and mobility on the battlefield.',
     abilities: [
       {
@@ -80,6 +82,7 @@ export const heroes = [
     name: 'Falgrim',
     category: 'marksman',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Falgrim is a legendary marksman hero from the Wilderburg faction, renowned for his precision and devastating ranged attacks.',
     abilities: [
       {
@@ -113,6 +116,7 @@ export const heroes = [
     name: 'Sibyl',
     category: 'marksman',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Sibyl is a legendary marksman hero from the Springwardens faction, known for her powerful area-of-effect spells and crowd control abilities.',
     abilities: [
       {
@@ -146,6 +150,7 @@ export const heroes = [
     name: 'Syndrion',
     category: 'marksman',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Syndrion is a legendary marksman hero from the Springwardens faction, excelling in rallying and delivering precise attacks.',
     abilities: [
       {
@@ -179,6 +184,7 @@ export const heroes = [
     name: 'Ffraegar',
     category: 'marksman',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Ffraegar is a legendary marksman hero from the Springwardens faction, celebrated for her precision and long-range attacks.',
     abilities: [
       {
@@ -212,6 +218,7 @@ export const heroes = [
     name: 'Kinnara',
     category: 'marksman',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Kinnara is a legendary marksman hero from the Wilderburg faction, known for her precision and control over the battlefield.',
     abilities: [
       {
@@ -245,6 +252,7 @@ export const heroes = [
     name: 'Nico',
     category: 'marksman',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Nico is a legendary marksman hero from the League of Order faction, renowned for his engineering prowess and precision strikes on the battlefield.',
     abilities: [
       {
@@ -278,6 +286,7 @@ export const heroes = [
     name: 'Gwanwyn',
     category: 'marksman',
     image: HERO_PLACEHOLDER,
+    maxStars: 5,
     description: 'Gwanwyn is an epic marksman hero from the Springwardens faction, renowned for her precision and effectiveness in peacekeeping operations.',
     abilities: [
       {
@@ -311,6 +320,7 @@ export const heroes = [
     name: 'Kregg',
     category: 'marksman',
     image: HERO_PLACEHOLDER,
+    maxStars: 5,
     description: 'Kregg is an epic marksman hero from the League of Order faction, known for his explosive attacks and mobility.',
     abilities: [
       {
@@ -344,6 +354,7 @@ export const heroes = [
     name: 'Liliya',
     category: 'magic',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Liliya is a legendary mage from the League of Order faction, renowned for her devastating area-of-effect (AoE) fire magic. Specializing in magic, peacekeeping, and skill talents, she excels in both PvE and PvP scenarios, making her a versatile and powerful hero on the battlefield.',
     abilities: [
       {
@@ -377,6 +388,7 @@ export const heroes = [
     name: 'Velyn',
     category: 'magic',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Velyn is a legendary mage from the Springwardens faction, known for his exceptional area-of-effect damage and crowd control abilities.',
     abilities: [
       {
@@ -410,6 +422,7 @@ export const heroes = [
     name: 'Thundelyn',
     category: 'magic',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Thundelyn is a legendary mage from the Springwardens faction, excelling in area-of-effect attacks and providing shields and healing to her allies.',
     abilities: [
       {
@@ -443,6 +456,7 @@ export const heroes = [
     name: 'Thaleia',
     category: 'magic',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Thaleia is a legendary mage from the League of Order faction, known for her supportive abilities that enhance allies and mitigate enemy damage.',
     abilities: [
       {
@@ -476,6 +490,7 @@ export const heroes = [
     name: 'Bertrand',
     category: 'magic',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Bertrand is a legendary magic hero from the League of Order faction, known for his ability to accumulate Golden Marks and unleash powerful attacks.',
     abilities: [
       {
@@ -509,6 +524,7 @@ export const heroes = [
     name: 'Tohar',
     category: 'magic',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Tohar is a legendary magic hero from the Wilderburg faction, renowned for his defensive capabilities and support skills.',
     abilities: [
       {
@@ -542,6 +558,7 @@ export const heroes = [
     name: 'Waldyr',
     category: 'magic',
     image: HERO_PLACEHOLDER,
+    maxStars: 5,
     description: 'Waldyr is an epic magic hero from the League of Order faction, excelling in area-of-effect damage and debuffing enemies.',
     abilities: [
       {
@@ -575,6 +592,7 @@ export const heroes = [
     name: 'Atheus',
     category: 'magic',
     image: HERO_PLACEHOLDER,
+    maxStars: 5,
     description: 'Atheus is an epic magic hero from the League of Order faction, known for his mobility and support capabilities.',
     abilities: [
       {
@@ -608,6 +626,7 @@ export const heroes = [
     name: 'Alwyn',
     category: 'magic',
     image: HERO_PLACEHOLDER,
+    maxStars: 5,
     description: 'Alwyn is an epic magic hero from the Springwardens faction, specializing in poison-based attacks and control.',
     abilities: [
       {
@@ -641,6 +660,7 @@ export const heroes = [
     name: 'Goresh',
     category: 'infantry',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Goresh is a legendary infantry hero from the Wilderburg faction, known for his exceptional tanking abilities and counterattack damage.',
     abilities: [
       {
@@ -674,6 +694,7 @@ export const heroes = [
     name: 'Skogul',
     category: 'infantry',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Skogul is a legendary infantry hero from the Wilderburg faction, excelling in counterattack damage and sustaining prolonged battles.',
     abilities: [
       {
@@ -707,6 +728,7 @@ export const heroes = [
     name: 'Mogro',
     category: 'infantry',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Mogro is a legendary infantry hero from the Wilderburg faction, known for his debuffing capabilities and area-of-effect damage.',
     abilities: [
       {
@@ -740,6 +762,7 @@ export const heroes = [
     name: 'Danfel',
     category: 'infantry',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Danfel is a legendary infantry hero from the League of Order faction, specializing in shielding allies and reducing incoming damage.',
     abilities: [
       {
@@ -773,6 +796,7 @@ export const heroes = [
     name: 'Garwood',
     category: 'infantry',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Garwood is a legendary infantry hero from the Springwardens faction, renowned for his exceptional healing abilities and defensive capabilities.',
     abilities: [
       {
@@ -806,6 +830,7 @@ export const heroes = [
     name: 'Nika',
     category: 'infantry',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Nika is a legendary infantry hero from the League of Order faction, excelling in counterattack damage and battlefield control.',
     abilities: [
       {
@@ -839,6 +864,7 @@ export const heroes = [
     name: 'Madeline',
     category: 'infantry',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Madeline is a legendary infantry hero from the League of Order faction, known for her robust defense and ability to shield allies.',
     abilities: [
       {
@@ -872,6 +898,7 @@ export const heroes = [
     name: 'Bakhar',
     category: 'infantry',
     image: HERO_PLACEHOLDER,
+    maxStars: 5,
     description: 'Bakhar is an epic infantry hero from the Wilderburg faction, specializing in garrison defense and counterattack strategies.',
     abilities: [
       {
@@ -905,6 +932,7 @@ export const heroes = [
     name: 'Naernin',
     category: 'infantry',
     image: HERO_PLACEHOLDER,
+    maxStars: 5,
     description: 'Naernin is a legendary infantry hero from the Springwardens faction, adept at gathering and supporting allied units.',
     abilities: [
       {
@@ -938,6 +966,7 @@ export const heroes = [
     name: 'Neya',
     category: 'cavalry',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Neya is a legendary cavalry hero from the Springwardens faction, known for her stealth tactics and rapid strikes.',
     abilities: [
       {
@@ -971,6 +1000,7 @@ export const heroes = [
     name: 'Lieh-Shan-Yen',
     category: 'cavalry',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Lieh-Shan-Yen is a legendary cavalry hero from the League of Order faction, excelling in swift movements and precise attacks.',
     abilities: [
       {
@@ -1004,6 +1034,7 @@ export const heroes = [
     name: 'Tobin',
     category: 'cavalry',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Tobin is a legendary cavalry hero from the League of Order faction, known for his defensive prowess and rally leadership.',
     abilities: [
       {
@@ -1037,6 +1068,7 @@ export const heroes = [
     name: 'Urag',
     category: 'cavalry',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Urag is a legendary cavalry hero from the Wilderburg faction, specializing in rapid assaults and debuffing enemies.',
     abilities: [
       {
@@ -1070,6 +1102,7 @@ export const heroes = [
     name: 'Theodore',
     category: 'cavalry',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Theodore is a legendary cavalry hero from the League of Order faction, excelling in garrison defense and skill-based attacks.',
     abilities: [
       {
@@ -1103,6 +1136,7 @@ export const heroes = [
     name: 'Forondil',
     category: 'cavalry',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Forondil is a legendary cavalry hero from the Springwardens faction, known for his flying units and control abilities.',
     abilities: [
       {
@@ -1136,6 +1170,7 @@ export const heroes = [
     name: 'Emrys',
     category: 'cavalry',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Emrys is a legendary cavalry hero from the Springwardens faction, specializing in high burst damage and mobility.',
     abilities: [
       {
@@ -1169,6 +1204,7 @@ export const heroes = [
     name: 'Bakshi',
     category: 'cavalry',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Bakshi is a legendary cavalry hero from the Wilderburg faction, known for his rage generation and survivability.',
     abilities: [
       {
@@ -1202,6 +1238,7 @@ export const heroes = [
     name: 'Alistair',
     category: 'cavalry',
     image: HERO_PLACEHOLDER,
+    maxStars: 5,
     description: 'Alistair is an epic cavalry hero from the Springwardens faction, providing area-of-effect damage and cavalry buffs.',
     abilities: [
       {
@@ -1235,6 +1272,7 @@ export const heroes = [
     name: 'Hosk',
     category: 'overall',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Hosk is a legendary hero from the Wilderburg faction, known for his rally leadership and enhancing legion capabilities.',
     abilities: [
       {
@@ -1268,6 +1306,7 @@ export const heroes = [
     name: 'Theia',
     category: 'overall',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Theia is a legendary hero from the League of Order faction, excelling in providing shields and enhancing skill damage.',
     abilities: [
       {
@@ -1301,6 +1340,7 @@ export const heroes = [
     name: 'Mu Hsiang',
     category: 'overall',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Mu Hsiang is a legendary support hero from the League of Order faction, specializing in healing and damage mitigation.',
     abilities: [
       {
@@ -1334,6 +1374,7 @@ export const heroes = [
     name: 'Bahorn',
     category: 'overall',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Bahorn is a legendary hero from the Wilderburg faction, known for his area-of-effect damage and enhancing flying legions.',
     abilities: [
       {
@@ -1367,6 +1408,7 @@ export const heroes = [
     name: 'Indis',
     category: 'overall',
     image: HERO_PLACEHOLDER,
+    maxStars: 6,
     description: 'Indis is a legendary hero from the Springwardens faction, offering defensive buffs and healing to her legions.',
     abilities: [
       {
@@ -1400,6 +1442,7 @@ export const heroes = [
     name: 'Eliana',
     category: 'overall',
     image: HERO_PLACEHOLDER,
+    maxStars: 5,
     description: 'Eliana is an epic hero from the League of Order faction, providing shields and healing to support her allies.',
     abilities: [
       {
@@ -1433,6 +1476,7 @@ export const heroes = [
     name: 'Tarra',
     category: 'overall',
     image: HERO_PLACEHOLDER,
+    maxStars: 5,
     description: 'Tarra is an epic hero from the League of Order faction, excelling in support roles with her healing and buffing abilities.',
     abilities: [
       {
@@ -1466,6 +1510,7 @@ export const heroes = [
     name: 'Pan',
     category: 'overall',
     image: HERO_PLACEHOLDER,
+    maxStars: 5,
     description: 'Pan is an epic hero from the Wilderburg faction, known for her gathering efficiency and healing support.',
     abilities: [
       {
