@@ -7,7 +7,7 @@ import axiosInstance from '../../../lib/axios';
 import { useLoader } from '../../../context/LoaderContext';
 
 export default function HeroesView() {
-  const [selectedCategory, setSelectedCategory] = useState('overal');
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [isSaving, setIsSaving] = useState(false);
   const [heroStatuses, setHeroStatuses] = useState({});
   const [heroAbilities, setHeroAbilities] = useState({});

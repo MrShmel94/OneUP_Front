@@ -7,7 +7,7 @@ import axiosInstance from '../../../lib/axios';
 import { useLoader } from '../../../context/LoaderContext';
 
 export default function ArtifactsView() {
-  const [selectedCategory, setSelectedCategory] = useState('overall');
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [isSaving, setIsSaving] = useState(false);
   const [artifactStatuses, setArtifactStatuses] = useState({});
   const [artifactAbilities, setArtifactAbilities] = useState({});
